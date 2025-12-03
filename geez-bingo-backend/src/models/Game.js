@@ -7,7 +7,7 @@ const Game = sequelize.define('Game', {
     defaultValue: DataTypes.UUIDV4,
     primaryKey: true
   },
-  gameId: {
+  game_id: {
     type: DataTypes.STRING,
     unique: true,
     allowNull: false
@@ -17,49 +17,50 @@ const Game = sequelize.define('Game', {
     defaultValue: 'waiting'
   },
   pot: {
-    type: DataTypes.DECIMAL(10, 2),
-    defaultValue: 0
+    type: DataTypes.DECIMAL(15, 2),
+    defaultValue: 0.00
   },
-  calledNumbers: {
+  called_numbers: {
     type: DataTypes.JSONB,
     defaultValue: []
   },
-  currentCalls: {
+  current_calls: {
     type: DataTypes.JSONB,
     defaultValue: []
   },
-  winnerId: {
+  winner_id: {
     type: DataTypes.UUID,
     allowNull: true
   },
-  winningCard: {
+  winning_card: {
     type: DataTypes.INTEGER,
     allowNull: true
   },
-  startTime: {
+  start_time: {
     type: DataTypes.DATE,
     allowNull: false
   },
-  endTime: {
+  end_time: {
     type: DataTypes.DATE,
     allowNull: true
   },
   settings: {
     type: DataTypes.JSONB,
     defaultValue: {
-      betAmount: 10,
-      houseFee: 0.05,
-      gameDuration: 180000,
-      maxCardsPerPlayer: 5
+      bet_amount: 10.00,
+      house_fee: 0.05,
+      game_duration: 180,
+      max_cards_per_player: 5,
+      min_players: 1
     }
+  },
+  metadata: {
+    type: DataTypes.JSONB,
+    defaultValue: {}
   }
 }, {
-  timestamps: true,
-  indexes: [
-    { fields: ['gameId'] },
-    { fields: ['status'] },
-    { fields: ['startTime'] }
-  ]
+  tableName: 'games',
+  timestamps: true
 });
 
 module.exports = Game;
