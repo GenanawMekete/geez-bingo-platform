@@ -1,0 +1,24 @@
+{
+  "name": "geez-bingo-telegram-bot",
+  "version": "1.0.0",
+  "description": "Geez Bingo Telegram Bot",
+  "main": "src/bot.js",
+  "scripts": {
+    "start": "node src/bot.js",
+    "dev": "nodemon src/bot.js",
+    "setup": "node scripts/setup.js",
+    "deploy": "bash deploy-telegram.sh"
+  },
+  "dependencies": {
+    "node-telegram-bot-api": "^0.64.0",
+    "axios": "^1.6.2",
+    "dotenv": "^16.3.1",
+    "winston": "^3.11.0",
+    "redis": "^4.6.11",
+    "crypto-js": "^4.2.0",
+    "node-cron": "^3.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
